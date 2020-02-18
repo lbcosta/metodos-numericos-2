@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index"
+    "start": "nodemon src/index",
+    "test": "jest"
   },
   "repository": "https://github.com/lbcosta/metodos-numericos-2.git",
   "author": "Leonardo Costa <lbcosta.dev@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^25.1.2",
+    "jest": "^25.1.0",
     "nodemon": "^2.0.2"
   }
 }
