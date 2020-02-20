@@ -1,13 +1,20 @@
 module.exports = class Derivatives {
-  static forwardDifference(fn, x, deltaX) {
-    return (fn(x + deltaX) - fn(x)) / deltaX;
+  constructor({ fn, delta }) {
+    this.fn = fn;
+    this.delta = delta;
   }
 
-  static backwardDifference(fn, x, deltaX) {
-    return (fn(x) - fn(x - deltaX)) / deltaX;
+  forwardDifference(x) {
+    return (this.fn(x + this.delta) - this.fn(x)) / this.delta;
   }
 
-  static centralDifference(fn, x, deltaX) {
-    return (fn(x + deltaX) - fn(x - deltaX)) / (2 * deltaX);
+  backwardDifference(x) {
+    return (this.fn(x) - this.fn(x - this.delta)) / this.delta;
+  }
+
+  centralDifference(x) {
+    return (
+      (this.fn(x + this.delta) - this.fn(x - this.delta)) / (2 * this.delta)
+    );
   }
 };
