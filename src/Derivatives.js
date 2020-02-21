@@ -6,7 +6,7 @@ module.exports = class Derivatives {
   }
 
   forwardDifference(x, order) {
-    if (order === 1) {
+    if (order === 1 || !order) {
       return (this.fn(x + this.delta) - this.fn(x)) / this.delta;
     }
 
@@ -19,7 +19,7 @@ module.exports = class Derivatives {
   }
 
   backwardDifference(x, order) {
-    if (order === 1) {
+    if (order === 1 || !order) {
       return (this.fn(x) - this.fn(x - this.delta)) / this.delta;
     }
 
@@ -32,7 +32,7 @@ module.exports = class Derivatives {
   }
 
   centralDifference(x, order) {
-    if (order === 1) {
+    if (order === 1 || !order) {
       return (
         (this.fn(x + this.delta) - this.fn(x - this.delta)) / (2 * this.delta)
       );
