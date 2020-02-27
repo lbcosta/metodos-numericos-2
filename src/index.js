@@ -1,13 +1,12 @@
-// const Derivatives = require("../src/Derivatives");
+const Derivatives = require("../src/Derivatives");
 
-// const data = {
-//   fn: x => 5 * x ** 6,
-//   x: 2,
-//   delta: 0.00001
-// };
+const data = {
+  fn: x => Math.sin(x),
+  delta: Math.PI / 8
+};
 
-// const derivatives = new Derivatives(data);
+const derivatives = new Derivatives(data);
 
-// const result = derivatives.centralDifference(data.x, 2);
+const result = derivatives.taylorApproximation(Math.PI / 6, 3);
 
-// console.log(result);
+console.log(result);

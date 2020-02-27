@@ -1,3 +1,5 @@
+const math = require("mathjs");
+
 module.exports = class Derivatives {
   constructor({ fn, delta }) {
     this.fn = fn;
@@ -44,5 +46,16 @@ module.exports = class Derivatives {
         this.centralDifference(x, this.order)) /
       this.delta
     );
+  }
+
+  taylorApproximation(x, depth) {
+    let result = 0;
+    for (let i = 0; i <= depth; i++) {
+      const fat = 1 / math.factorial(i);
+      const derivative = i === 0 ? this.fn(x) : this.centralDifference(x, i);
+      const deltaPowered = this.delta ** i;
+      result += fat * derivative * deltaPowered;
+    }
+    return result;
   }
 };
