@@ -1,4 +1,4 @@
-const Derivatives = require("../src/Derivatives");
+const FiniteDifference = require("../src/FiniteDifference");
 const math = require("mathjs");
 
 let errors = [];
@@ -12,12 +12,13 @@ range.forEach(h => {
     delta: h
   };
 
-  const derivatives = new Derivatives(data);
+  FiniteDifference.setup(data);
 
-  const result = derivatives.backwardDifference(0, 1);
+  const result = FiniteDifference.backward(0, 1);
 
   errors.push({
     Delta: Number(h.toFixed(4)).toExponential(),
+    "Exact Derivative": exactDerivative,
     "Backward Difference": Number(result.toFixed(4)).toExponential(),
     Error: Number(Math.abs(result - exactDerivative).toFixed(4)).toExponential()
   });
